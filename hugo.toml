@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://sentier.run'
 locale = 'fr-FR'
 title = 'Sentier'
 theme = 'swiss-operator'
