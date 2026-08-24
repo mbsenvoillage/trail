@@ -1,9 +1,6 @@
 [submodule "themes/hugo-theme-tokiwa"]
 	path = themes/hugo-theme-tokiwa
 	url = https://github.com/heyeshuang/hugo-theme-tokiwa.git
-[submodule "themes/ananke"]
-	path = themes/ananke
-	url = https://github.com/gohugo-ananke/ananke
 [submodule "themes/swiss-operator"]
 	path = themes/swiss-operator
 	url = https://github.com/carlosplanchon/hugo-theme-swiss-operator
