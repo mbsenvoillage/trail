@@ -1,0 +1,14 @@
+# Hugo default output directory
+/public/
+
+# Build cache directory (optional but recommended to avoid repo bloat)
+/resources/_gen/
+
+# Log files and locks
+hugo.log
+.hugo_build.lock
+hugo_stats.json
+
+# Local OS files
+.DS_Store
+Thumbs.db
