@@ -1,0 +1,49 @@
+{{ define "title" }}{{ end }} {{ define "main" }}
+<div class="article-grid">
+  {{ $pages := where .Site.RegularPages "Section" "posts" }} {{ $categoryColors
+  := site.Params.categories.colors }} {{ range first 6 ($pages.ByDate.Reverse)
+  }}
+  <article class="article-card">
+    {{/* Initialize our thumbnail image variable */}} {{ $thumbImage := "" }}
+    {{/* 1. Try manual front matter image first (looks for a bundled filename
+    like "featured.jpg") */}} {{ if .Params.image }} {{ $thumbImage =
+    .Resources.GetMatch .Params.image }} {{ end }} {{/* 2. Fallback:
+    Automatically extract the first image filename from the content */}} {{ if
+    not $thumbImage }} {{ $firstMdImage := findRE `\!\[.*\]\((.*)\)` .RawContent
+    1 }} {{ if $firstMdImage }} {{/* Extract just the filename from the markdown
+    syntax ![](filename.jpg) */}} {{ $filename := index (findRE `\((.*)\)`
+    (index $firstMdImage 0) 1) 0 | replaceRE `[\(\)]` "" }} {{/* Match that
+    filename against the page's bundled resources */}} {{ $thumbImage =
+    .Resources.GetMatch $filename }} {{ end }} {{ end }} {{/* 3. Render the
+    image safely if Hugo found the bundle resource */}} {{ if $thumbImage }}
+    <a href="{{ .RelPermalink }}">
+      {{/* Optional: Use .Resize "600x400" to automatically optimize and crop
+      your grid thumbnails */}}
+      <img src="{{ $thumbImage.RelPermalink }}" alt="{{ .Title }}" />
+    </a>
+    {{ end }} {{ $borderColor := "#0055FF" }} {{ with .Params.categories }} {{
+    $cat := index . 0 }} {{ with index $categoryColors $cat }} {{ $borderColor =
+    . }} {{ end }} {{ end }}
+
+    <span class="card-date mono-date"
+      >{{ time.Format "2 January 2006" .Date }}</span
+    >
+
+    <h3
+      class="card-title"
+      style="border-left: 4px solid {{ $borderColor }}; padding-left: 12px;"
+    >
+      <a
+        href="{{ .RelPermalink }}"
+        style="text-decoration: none; color: inherit"
+        >{{ .Title }}</a
+      >
+    </h3>
+
+    {{ if .Params.description }}
+    <p class="card-description">{{ .Params.description }}</p>
+    {{ end }}
+  </article>
+  {{ end }}
+</div>
+{{ end }}
