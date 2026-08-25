@@ -1,7 +1,67 @@
+# ==========================================
+# GLOBAL SETTINGS (Must be at the absolute top)
+# ==========================================
 baseURL = 'https://sentier.run'
 locale = 'fr-FR'
 title = 'Sentier'
 theme = 'swiss-operator'
+defaultContentLanguage = "fr"  # Forces Hugo to look for fr.toml
+
+# ==========================================
+# LANGUAGE DEFINITIONS
+# ==========================================
+[languages.fr]
+locale = "fr-FR"
+label = "Français"
+
+# ==========================================
+# OUTPUT FORMATS & SERVICES
+# ==========================================
+[outputs]
+home = ['html', 'rss']
+section = ['html', 'rss']
+
+[services.googleAnalytics]
+id = "G-XXXXXXXXXX"
+
+# ==========================================
+# THEME PARAMETERS
+# ==========================================
+[params]
+description = "A personal blog about your topics"
+postsPerPage = 10
+favicon = "/favicon.svg"
+
+[params.social]
+instagram = "https://instagram.com"
+strava = "https://strava.com"
+
+[params.theme]
+accentBlue = "#0055FF"
+accentRed = "#E62B1E"
+showRss = true
+localFonts = false  
+
+[params.categories]
+colors = { Engineering = "#0055FF", Aviation = "#E62B1E", Design = "#000000" }
+
+# ==========================================
+# MAIN NAVIGATION (FRENCH)
+# ==========================================
+
+[[menu.main]]
+  identifier = "about"
+  name   = "À propos"
+  url    = "/about/"
+  weight = 3
+
+# ==========================================
+# ENGINE MODULES (Must be at the absolute bottom)
+# ==========================================
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.120.0"
 
 [caches]
   [caches.images]
