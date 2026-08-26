@@ -30,7 +30,7 @@ id = "G-XXXXXXXXXX"
 [params]
 description = "A personal blog about your topics"
 postsPerPage = 10
-favicon = "/favicon.svg"
+favicon = "/favicon.png"
 
 [params.social]
 instagram = "https://instagram.com"
